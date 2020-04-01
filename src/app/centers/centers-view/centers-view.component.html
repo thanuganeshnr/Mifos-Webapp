@@ -1,0 +1,35 @@
+<mat-card class="center-card">
+  <mat-card-header fxLayout="column" class="header">
+    <mat-card-title-group class="header-title-group">
+      <div class="mat-typography center-card-title">
+ <mat-card-title>
+  <h3>  Center Name : </h3>
+  </mat-card-title>
+  <mat-card-subtitle>
+ <p>Account :  <br>   
+  Office :     </p>  
+</mat-card-subtitle>
+</div>
+</mat-card-title-group>
+  <mat-card-actions class="center-actions">
+    <button mat-raised-button [routerLink]="['../editcenter']">Edit</button>
+    <button mat-raised-button>+ Add Group</button>
+    <button mat-raised-button>Manage Group</button>
+    <button mat-raised-button>Center Saving Application</button>
+    <button mat-raised-button [matMenuTriggerFor]="More">More</button>
+    <mat-menu #More="matMenu">
+      <button mat-menu-item>Assign Staff</button>
+      <button mat-menu-item>Close</button>
+      <button mat-menu-item>Attach Meeting</button>
+      <button mat-menu-item>Self Assignment History</button>
+    </mat-menu>
+  </mat-card-actions>
+</mat-card-header>
+<mat-card-content>
+  <nav mat-tab-nav-bar class="navigation-tabs">
+    <a mat-tab-link [routerLink]="['./general']" >General</a>
+    <a mat-tab-link [routerLink]="['./notes']" >Notes</a>
+  </nav>
+  <router-outlet></router-outlet>
+</mat-card-content>
+</mat-card>

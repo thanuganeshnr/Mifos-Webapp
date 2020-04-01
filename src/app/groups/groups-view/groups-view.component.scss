@@ -1,0 +1,35 @@
+
+.group-card{
+    margin: 0 auto;
+    max-width: 100rem;
+    width: 90%;
+    padding: 0;
+    .header{
+        padding: 1%;
+        .header-title-group{
+            .client-card-title{
+                color: white;
+                width: 90%;
+                p{
+                    color: white;
+                }
+            }
+        }
+        .group-image-container{
+            margin:1%;
+            .group-profile-image{
+                object-fit: cover;
+                border-radius: 50px;
+                margin-right: -50%;
+            }
+        }
+        .group-actions{
+            align-self:flex-end;
+        margin: 0 1%;
+            
+        }
+    }
+    .navigations-tabs{
+        overflow: auto;
+    }
+}

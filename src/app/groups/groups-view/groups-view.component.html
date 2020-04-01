@@ -1,0 +1,59 @@
+<mat-card class="container">
+  <div class="group-card" style="background-color: blue;">
+    <mat-card-header fxLayout="column" class="header">
+    <mat-card-title-group class="header-title-group">
+      <div class="group-image-container">
+        <div>
+      
+      <img mat-card-md-image class="group-profile-image"
+      [src]="(clientImage)?clientImage:'assets/images/user_placeholder.png'">
+        </div>
+      </div>
+      <div class="mat-typography client-card-title">
+        <mat-card-title>
+          <h3>
+            <b>Client Name :</b>
+          </h3>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <p>
+            1234 <br>
+            6.4.50<br>
+            <!--<a>{{group.name}}</a>-->
+          
+          </p>
+        </mat-card-subtitle>
+        </div>
+    </mat-card-title-group>
+  <mat-card-actions class="group-actions">
+  <button mat-raised-button routerLink="../editgroup">Edit</button>
+  <button mat-raised-button>Group Saving Application</button>
+  <button mat-raised-button>Group Loan Application</button>
+  <button mat-raised-button>Bulk JLG Loan Application</button> 
+  <button mat-raised-button [matMenuTriggerFor]="More">More Info</button>
+  <mat-menu #More="matMenu">
+    <button mat-menu-item>Attendance</button>
+    <button mat-menu-item>Unassign Staff</button>
+    <button mat-menu-item>Close</button>
+  </mat-menu>
+  </mat-card-actions>
+  </mat-card-header>
+  </div>
+  <mat-card-content>
+    <nav mat-tab-nav-bar class="navigation-tabs">
+      <a mat-tab-link [routerLink]="['./general']" routerLinkActive #general="routerLinkActive"
+      [active]="general.isActive">
+      General</a>
+      <a mat-tab-link [routerLink]="['./notes']" routerLinkActive #notes="routerLinkActive"
+      [active]="notes.isActive">
+    Notes
+    </a>
+    <a mat-tab-link [routerLink]="['./committee']" routerLinkActive #committee="routerLinkActive"
+  [active]="committee.isActive">
+Committee
+</a>    
+  </nav>
+      <router-outlet></router-outlet>
+  </mat-card-content>
+  </mat-card>
+  

@@ -1,0 +1,27 @@
+.center-card {
+    margin: 0 auto;
+    max-width: 80rem;
+    width: 90%;
+    padding: 0;
+    .header {
+      padding: 1%;
+      background-color: #1074b9;
+      .header-title-group {
+        .center-card-title {
+          color: white;
+          width: 90%;
+          p {
+            color: white;
+          }
+        }
+      }
+  
+      .center-actions {
+        align-self: flex-end;
+        margin: 0 1%;
+      }
+    }
+    .navigation-tabs {
+      overflow: auto;
+    }
+  }

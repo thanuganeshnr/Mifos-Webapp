@@ -9,7 +9,7 @@
         <div fxLayout="column">
 
           <mat-form-field>
-            <mat-label>Name</mat-label>
+            <mat-label>Office</mat-label>
             <input required matInput formControlName="name">
             <mat-error *ngIf="officeForm.controls.name.hasError('required')">
               Office is <strong>required</strong>
@@ -17,7 +17,7 @@
           </mat-form-field>
 
           <mat-form-field>
-            <mat-label>Staff</mat-label>
+            <mat-label>Parent Office</mat-label>
             <mat-select required formControlName="parentId">
               <mat-option *ngFor="let office of officeData" [value]="office.id">
                 {{ office.name }}
@@ -29,7 +29,7 @@
           </mat-form-field>
 
           <mat-form-field>
-            <mat-label>Activation Date</mat-label>
+            <mat-label>Opened On</mat-label>
             <input matInput [min]="minDate" [max]="maxDate" formControlName="openingDate" required [matDatepicker]="openedOnDatePicker">
             <mat-datepicker-toggle matSuffix [for]="openedOnDatePicker"></mat-datepicker-toggle>
             <mat-datepicker #openedOnDatePicker></mat-datepicker>

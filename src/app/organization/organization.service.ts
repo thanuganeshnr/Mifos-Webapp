@@ -69,6 +69,13 @@ export class OrganizationService {
   getCurrencies(): Observable<any> {
     return this.http.get('/currencies');
   }
+  
+  /**
+   * @returns {Observable<any>} Holidays data
+   */
+  getHolidays(): Observable<any> {
+    return this.http.get('/holidays?officeId=1');
+  }
 
   /**
    * @returns {Observable<any>} SMS Campaigns data

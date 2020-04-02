@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 /** Custom Modules */
 import { SharedModule } from '../shared/shared.module';
 import { OrganizationRoutingModule } from './organization-routing.module';
-import { PipesModule } from '../pipes/pipes.module';
+import { PipesModule } from 'app/pipes/pipes.module';
 
 /** Custom Components */
 import { OrganizationComponent } from './organization.component';

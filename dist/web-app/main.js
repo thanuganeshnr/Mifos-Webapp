@@ -6672,7 +6672,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _centers_view_centers_view_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./centers-view/centers-view.component */ "./src/app/centers/centers-view/centers-view.component.ts");
 /* harmony import */ var _centers_view_general_tab_general_tab_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./centers-view/general-tab/general-tab.component */ "./src/app/centers/centers-view/general-tab/general-tab.component.ts");
 /* harmony import */ var _centers_view_notes_tab_notes_tab_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./centers-view/notes-tab/notes-tab.component */ "./src/app/centers/centers-view/notes-tab/notes-tab.component.ts");
-/* harmony import */ var _organization_offices_create_office_create_office_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../organization/offices/create-office/create-office.component */ "./src/app/organization/offices/create-office/create-office.component.ts");
+/* harmony import */ var _centers_view_edit_center_edit_center_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./centers-view/edit-center/edit-center.component */ "./src/app/centers/centers-view/edit-center/edit-center.component.ts");
 
 
 
@@ -6714,7 +6714,7 @@ var routes = [
                 },
                 {
                     path: 'editcenter',
-                    component: _organization_offices_create_office_create_office_component__WEBPACK_IMPORTED_MODULE_9__["CreateOfficeComponent"],
+                    component: _centers_view_edit_center_edit_center_component__WEBPACK_IMPORTED_MODULE_9__["EditCenterComponent"],
                     data: { title: Object(_core_i18n_i18n_service__WEBPACK_IMPORTED_MODULE_4__["extract"])('Edit Center'), breadcrumb: 'Edit Center', routeParamBreadcrumb: false }
                 }
             ]
@@ -6801,7 +6801,7 @@ var CentersViewComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n\n  <mat-card>\n\n     \n\n      \n\n          <mat-form-field>\n            <mat-label >Name</mat-label>\n            <input required matInput >\n            \n          </mat-form-field>\n<br>\n          <mat-form-field>\n            <mat-label>Staff</mat-label>\n            <mat-select  >\n              <mat-option >\n               Finos\n              </mat-option>\n            </mat-select>\n           \n          </mat-form-field>\n<br>\n          <mat-form-field>\n            <mat-label>External ID</mat-label>\n            <input matInput >\n          </mat-form-field>\n<br>\n          <mat-form-field>\n            <mat-label>Activation Date</mat-label>\n            <input  required [matDatepicker]=\"openedOnDatePicker\">\n            <mat-datepicker-toggle matSuffix [for]=\"openedOnDatePicker\"></mat-datepicker-toggle>\n            <mat-datepicker #openedOnDatePicker></mat-datepicker>\n           \n          </mat-form-field>\n\n         \n          \n      \n        \n     \n\n      <mat-card-actions fxLayout=\"row\" fxLayout.xs=\"column\" fxLayoutAlign=\"center\" fxLayoutGap=\"5px\">\n        <button type=\"button\" mat-raised-button [routerLink]=\"['../']\">Cancel</button>\n        <button mat-raised-button color=\"primary\" [disabled]=\"!officeForm.valid\">Submit</button>\n      </mat-card-actions>\n\n\n\n  </mat-card>\n\n</div>\n"
+module.exports = "<div class=\"container\">\n\n  <mat-card>\n\n    <form [formGroup]=\"officeForm\" (ngSubmit)=\"submit()\">\n\n      <mat-card-content>\n\n        <div fxLayout=\"column\">\n\n          <mat-form-field>\n            <mat-label>Name</mat-label>\n            <input required matInput formControlName=\"name\">\n            <mat-error *ngIf=\"officeForm.controls.name.hasError('required')\">\n              Office is <strong>required</strong>\n            </mat-error>\n          </mat-form-field>\n\n          <mat-form-field>\n            <mat-label>Staff</mat-label>\n            <mat-select required formControlName=\"parentId\">\n              <mat-option *ngFor=\"let office of officeData\" [value]=\"office.id\">\n                {{ office.name }}\n              </mat-option>\n            </mat-select>\n           \n          </mat-form-field>\n\n          <mat-form-field>\n            <mat-label>Activation Date</mat-label>\n            <input matInput [min]=\"minDate\" [max]=\"maxDate\" formControlName=\"openingDate\" required [matDatepicker]=\"openedOnDatePicker\">\n            <mat-datepicker-toggle matSuffix [for]=\"openedOnDatePicker\"></mat-datepicker-toggle>\n            <mat-datepicker #openedOnDatePicker></mat-datepicker>\n            <mat-error *ngIf=\"officeForm.controls.openingDate.hasError('required')\">\n              Opening Date is <strong>required</strong>\n            </mat-error>\n          </mat-form-field>\n\n          <mat-form-field>\n            <mat-label>External ID</mat-label>\n            <input matInput formControlName=\"externalId\">\n          </mat-form-field>\n          \n        </div>\n        \n      </mat-card-content>\n\n      <mat-card-actions fxLayout=\"row\" fxLayout.xs=\"column\" fxLayoutAlign=\"center\" fxLayoutGap=\"5px\">\n        <button type=\"button\" mat-raised-button [routerLink]=\"['../']\">Cancel</button>\n        <button mat-raised-button color=\"primary\" [disabled]=\"!officeForm.valid\">Submit</button>\n      </mat-card-actions>\n\n    </form>\n\n  </mat-card>\n\n</div>\n"
 
 /***/ }),
 
@@ -6812,7 +6812,7 @@ module.exports = "<div class=\"container\">\n\n  <mat-card>\n\n     \n\n      \n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".container {\n  max-width: 37rem; }\n  .container .thanu {\n    color: black; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2xhcDE0L0RvY3VtZW50cy9yci9zcmMvYXBwL2NlbnRlcnMvY2VudGVycy12aWV3L2VkaXQtY2VudGVyL2VkaXQtY2VudGVyLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksZ0JBQWdCLEVBQUE7RUFEcEI7SUFHUSxZQUFXLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9jZW50ZXJzL2NlbnRlcnMtdmlldy9lZGl0LWNlbnRlci9lZGl0LWNlbnRlci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jb250YWluZXIge1xuICAgIG1heC13aWR0aDogMzdyZW07XG4gICAgLnRoYW51e1xuICAgICAgICBjb2xvcjpibGFjaztcbiAgICB9XG59Il19 */"
+module.exports = ".container {\n  max-width: 37rem; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2xhcDE0L0RvY3VtZW50cy9yci9zcmMvYXBwL2NlbnRlcnMvY2VudGVycy12aWV3L2VkaXQtY2VudGVyL2VkaXQtY2VudGVyLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksZ0JBQWdCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9jZW50ZXJzL2NlbnRlcnMtdmlldy9lZGl0LWNlbnRlci9lZGl0LWNlbnRlci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jb250YWluZXIge1xuICAgIG1heC13aWR0aDogMzdyZW07XG4gICAgXG59XG4iXX0= */"
 
 /***/ }),
 
@@ -6828,12 +6828,65 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditCenterComponent", function() { return EditCenterComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+
+
+
 
 
 var EditCenterComponent = /** @class */ (function () {
-    function EditCenterComponent() {
+    /**
+     * Retrieves the offices data from `resolve`.
+     * @param {FormBuilder} formBuilder Form Builder.
+     *
+     * @param {ActivatedRoute} route Activated Route.
+     * @param {Router} router Router for navigation.
+     * @param {DatePipe} datePipe Date Pipe to format date.
+     */
+    function EditCenterComponent(formBuilder, router, route, datePipe) {
+        var _this = this;
+        this.formBuilder = formBuilder;
+        this.router = router;
+        this.route = route;
+        this.datePipe = datePipe;
+        /** Minimum Date allowed. */
+        this.minDate = new Date(2000, 0, 1);
+        /** Maximum Date allowed. */
+        this.maxDate = new Date();
+        this.route.data.subscribe(function (data) {
+            _this.officeData = data.offices;
+        });
     }
     EditCenterComponent.prototype.ngOnInit = function () {
+        this.createofficeForm();
+    };
+    /**
+     * Creates the Office Form
+     */
+    EditCenterComponent.prototype.createofficeForm = function () {
+        this.officeForm = this.formBuilder.group({
+            'name': ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            'parentId': ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            'openingDate': ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            'externalId': [''],
+        });
+    };
+    /**
+     * Submits the office form and creates office.
+     * if successful redirects to offices
+     */
+    EditCenterComponent.prototype.submit = function () {
+        var prevOpeningDate = this.officeForm.value.openingDate;
+        // TODO: Update once language and date settings are setup
+        var dateFormat = 'yyyy-MM-dd';
+        this.officeForm.patchValue({
+            openingDate: this.datePipe.transform(prevOpeningDate, dateFormat)
+        });
+        var office = this.officeForm.value;
+        office.locale = 'en';
+        office.dateFormat = dateFormat;
     };
     EditCenterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -6841,7 +6894,10 @@ var EditCenterComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./edit-center.component.html */ "./src/app/centers/centers-view/edit-center/edit-center.component.html"),
             styles: [__webpack_require__(/*! ./edit-center.component.scss */ "./src/app/centers/centers-view/edit-center/edit-center.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
+            _angular_common__WEBPACK_IMPORTED_MODULE_4__["DatePipe"]])
     ], EditCenterComponent);
     return EditCenterComponent;
 }());

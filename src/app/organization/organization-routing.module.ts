@@ -28,6 +28,7 @@ import { EntityDataTableChecksComponent } from './entity-data-table-checks/entit
 import { WorkingDaysComponent } from './working-days/working-days.component';
 import { CreateOfficeComponent } from './offices/create-office/create-office.component';
 import { CreatePaymentTypeComponent } from './payment-types/create-payment-type/create-payment-type.component';
+import { HolidaysComponent } from './holidays/holidays.component';
 
 /** Custom Resolvers */
 import { LoanProvisioningCriteriaResolver } from './loan-provisioning-criteria/loan-provisioning-criteria.resolver';
@@ -45,7 +46,8 @@ import { PaymentTypeResolver } from './payment-types/payment-type.resolver';
 import { PasswordPreferencesTemplateResolver } from './password-preferences/password-preferences-template.resolver';
 import { EntityDataTableChecksResolver } from './entity-data-table-checks/entity-data-table-checks.resolver';
 import { WorkingDaysResolver } from './working-days/working-days.resolver';
-import { HolidaysComponent } from './holidays/holidays.component';
+import { HolidaysResolver } from './holidays/holidays.resolver';
+
 /** Organization Routes */
 const routes: Routes = [
   Route.withShell([
@@ -66,14 +68,6 @@ const routes: Routes = [
           }
         },
         {
-          path: 'manage-holidays',
-          component: HolidaysComponent,
-          data: { title: extract('Manage Holidays'), breadcrumb: 'Manage Holidys' },
-          resolve: {
-            loanProvisioningCriteria: LoanProvisioningCriteriaResolver
-          }
-        },
-        {
           path: 'offices',
           data: { title: extract('Manage Offices'), breadcrumb: 'Manage Offices' },
           children: [
@@ -84,14 +78,14 @@ const routes: Routes = [
               offices: OfficesResolver
               }
             },
-           /* {
+            {
               path: 'create',
               component: CreateOfficeComponent,
               data: { title: extract('Create Office'), breadcrumb: 'Create Office' },
               resolve: {
                 offices: OfficesResolver,
               }
-            } */
+            }
           ]
         },
         {
@@ -236,7 +230,17 @@ const routes: Routes = [
           resolve: {
             workingDays: WorkingDaysResolver
           }
-        }
+        },
+        {path: 'holidays',
+        component: HolidaysComponent,
+        data: { title: extract('Holidays'), breadcrumb: 'Manage Holidays' },
+          resolve: {
+            holidays: HolidaysResolver,
+            offices: OfficesResolver
+          }
+        },
+      
+      
       ]
     }
   ])
@@ -265,7 +269,8 @@ const routes: Routes = [
     PaymentTypeResolver,
     PasswordPreferencesTemplateResolver,
     EntityDataTableChecksResolver,
-    WorkingDaysResolver
+    WorkingDaysResolver,
+    HolidaysResolver
   ]
 })
 export class OrganizationRoutingModule { }

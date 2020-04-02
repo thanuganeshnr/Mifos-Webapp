@@ -1,0 +1,11 @@
+.container{
+    .officeId{
+        border: red($color: #000000);
+    }
+    mat-select {
+        background-color: white;   
+        color: gray;
+        border : 1px solid #666666;
+
+}
+}

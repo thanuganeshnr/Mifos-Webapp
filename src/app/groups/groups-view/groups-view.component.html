@@ -17,8 +17,7 @@
         </mat-card-title>
         <mat-card-subtitle>
           <p>
-            1234 <br>
-            6.4.50<br>
+           
             <!--<a>{{group.name}}</a>-->
           
           </p>
@@ -27,14 +26,14 @@
     </mat-card-title-group>
   <mat-card-actions class="group-actions">
   <button mat-raised-button routerLink="../editgroup">Edit</button>
-  <button mat-raised-button>Group Saving Application</button>
-  <button mat-raised-button>Group Loan Application</button>
-  <button mat-raised-button>Bulk JLG Loan Application</button> 
+  <button mat-raised-button routerLink="../grpsaveapp">Group Saving Application</button>
+  <button mat-raised-button routerLink="../grploanapp">Group Loan Application</button>
+  <button mat-raised-button routerLink="../bulkloanapp">Bulk JLG Loan Application</button> 
   <button mat-raised-button [matMenuTriggerFor]="More">More Info</button>
   <mat-menu #More="matMenu">
-    <button mat-menu-item>Attendance</button>
-    <button mat-menu-item>Unassign Staff</button>
-    <button mat-menu-item>Close</button>
+    <button mat-menu-item routerLink="../attendanceview">Attendance</button>
+    <button mat-menu-item routerLink="../unassignview">Assign Staff</button>
+    <button mat-menu-item routerLink="../closeview">Close</button>
   </mat-menu>
   </mat-card-actions>
   </mat-card-header>

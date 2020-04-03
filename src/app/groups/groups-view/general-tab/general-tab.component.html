@@ -2,23 +2,24 @@
     <br><h3> Clients</h3>
 <div fxLayout="row" fxLayoutGap="32px" class="general-history-container">
     <div class="general-actions general-card">
-    <button mat-raised-button>Transfer Clients </button> &nbsp;
-    <button mat-raised-button>Manage Members </button> &nbsp;
-    <button mat-raised-button> Add</button>&nbsp;
+    <button mat-raised-button [routerLink]="['../../transferclients']">Transfer Clients </button> &nbsp;
+    <button mat-raised-button [routerLink]="['../../managemembers']">Manage Members </button> &nbsp;
+    <button mat-raised-button [routerLink]="['../../addmembers']"> Add</button>&nbsp;
     <div class="general-perform-history-cont">
         <p>Account No &nbsp;&nbsp;&nbsp;&nbsp;
             Name &nbsp;&nbsp;&nbsp;&nbsp; 
              Actions 
         </p><hr>
         <p>
-            <button mat-raised-button class="general-button">+ JLG Loan Application</button>
+            <button mat-raised-button class="general-button" [routerLink]="['../../jlgloan1']">+ JLG Loan Application</button>
         </p><hr>
         <p>
-            <button mat-raised-button class="general-button">+ JLG Loan Application</button>
+            <button mat-raised-button class="general-button"[routerLink]="['../../jlgloan1']">+ JLG Loan Application</button>
         </p><hr>       
         </div><br>
         <p> <b>Savings Account Overview</b>
-            <button mat-raised-button class="general-button1">View Closed Accounts</button>
+            <button mat-raised-button class="general-button1" [routerLink]="['../../viewcloseacc']">
+                View Closed Accounts</button>
         <br></p>
         <div class="general-perform-history-cont">
         <p>Account # &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

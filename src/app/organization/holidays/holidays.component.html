@@ -9,11 +9,11 @@
     </mat-form-field>
     </div>
     
-    <select  placeholder="Select office" [(ngModel)]="empSelected" (ngModelChange)="onWriterChange($event)">
-       <option *ngFor="let office of officeData" [value]="office.id" >
+    <mat-select #showClosedAccounts placeholder="Select office" [(ngModel)]="empSelected" (ngModelChange)="onWriterChange($event)">
+       <mat-option *ngFor="let office of officeData" [value]="office.id" >
         {{ office.name }}
-      </option>
-    </select>
+      </mat-option>
+    </mat-select>
     &nbsp;&nbsp;&nbsp;
     <div class="action-button" fxLayoutGap="25px">
     
@@ -33,20 +33,20 @@
   <!-- Start Date -->
   <ng-container matColumnDef="startdate">
     <th mat-header-cell *matHeaderCellDef mat-sort-header='fromDate'> Start Date </th>
-    <td mat-cell *matCellDef="let holidays" ui-date-format="mm/dd/yyyy"> {{holidays.fromDate}} </td>
+    <td mat-cell *matCellDef="let holidays" > {{holidays.fromDate | date:'yyyy-MM-dd'}} </td>
   </ng-container>
 
   <!-- End Date -->
   <ng-container matColumnDef="endDateSelect">
     <th mat-header-cell *matHeaderCellDef mat-sort-header='toDate'> End Date </th>
-    <td mat-cell *matCellDef="let holidays"> {{holidays.toDate}} </td>
+    <td mat-cell *matCellDef="let holidays"> {{holidays.toDate | date:'yyyy-MM-dd'}} </td>
   </ng-container>
 
   
   <!-- Repayment Scheduled To-->
   <ng-container matColumnDef="repaymentsheduleto">
     <th mat-header-cell *matHeaderCellDef mat-sort-header='repaymentsRescheduledTo'> Repayment Scheduled To </th>
-    <td mat-cell *matCellDef="let holidays"> {{holidays.repaymentsRescheduledTo}}</td>
+    <td mat-cell *matCellDef="let holidays"> {{holidays.repaymentsRescheduledTo | date:'yyyy-MM-dd'}}</td>
   </ng-container>
 
   <!-- Status Column -->

@@ -9,15 +9,15 @@
     </mat-form-field>
     </div>
     
-    <mat-select #showClosedAccounts placeholder="Select office" [(ngModel)]="empSelected" (ngModelChange)="onWriterChange($event)">
-       <mat-option *ngFor="let office of officeData" [value]="office.id" >
+    <mat-select #showClosedAccounts placeholder="Select office" [(ngModel)]="empSelected" (ngModelChange)="onWriterChange($event)" >
+       <mat-option *ngFor="let office of officeData" [value]="office.id"  >
         {{ office.name }}
       </mat-option>
     </mat-select>
     &nbsp;&nbsp;&nbsp;
     <div class="action-button" fxLayoutGap="25px">
     
-    <button mat-raised-button color="primary" [routerLink]="['./add']">
+    <button mat-raised-button color="primary" [routerLink]="['create']">
       <fa-icon icon="plus"></fa-icon>&nbsp;&nbsp;Create Holidays
     </button>
   </div>

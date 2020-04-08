@@ -13,7 +13,7 @@ import { OrganizationService } from '../organization.service';
  * Holidays data resolver.
  */
 @Injectable()
-export class HolidaysResolver implements Resolve<Object> {
+export class HolidaysDataResolver implements Resolve<Object> {
 
   /**
    * @param {OrganizationService} organizationService Organization service.
@@ -24,10 +24,11 @@ export class HolidaysResolver implements Resolve<Object> {
    * Returns the Holiday data.
    * @returns {Observable<any>}
    */
-  resolve(): Observable<any> {
-    console.log('reached resolver');
- return this.organizationService.getHolidays();
- 
+  resolve(route: ActivatedRouteSnapshot): Observable<any> {
+    const employeeId  = route.paramMap.get('id');
+    console.log(employeeId);
+    console.log('reached data resolver');
+    return this.organizationService.getHolidaysData(employeeId);
   }
   //resolve(route: ActivatedRouteSnapshot): Observable<any> {
     //const officeId  = route.paramMap.get('1');

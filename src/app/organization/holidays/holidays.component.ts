@@ -5,7 +5,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, merge } from 'rxjs';
 import { OrganizationService } from '../organization.service';
 import { tap, subscribeOn } from 'rxjs/operators';
-import { HolidaysResolver } from './holidays.resolver';
+import { HolidaysDataResolver } from './holidaysData.resolver';
 import { stringToKeyValue } from '@angular/flex-layout/extended/typings/style/style-transforms';
 import { setTNodeAndViewData } from '@angular/core/src/render3/state';
 
@@ -41,7 +41,7 @@ export class HolidaysComponent implements OnInit  {
   
   
 
-  constructor(private route: ActivatedRoute,private httpclient:HttpClient) { 
+  constructor(private route: ActivatedRoute,private httpclient:HttpClient,private organizationservice:OrganizationService,private HolidaysDataResolver:HolidaysDataResolver) { 
     this.route.data.subscribe(( data: { holidays: any ,offices: any}) => {
       this.holidaysData = data.holidays;
       this.officeData = data.offices;
@@ -74,19 +74,19 @@ export class HolidaysComponent implements OnInit  {
 
   
   /**
-   * @param {any} val 
+   * @param {any} officeId
    * @returns {Observable<any>}
    */
   
- onWriterChange(val:any) {
+ onOfficeChange(officeId:string) {
    
-  console.log(val);
-  console.log('reached on writer changed');
-  
-  return this.httpclient.get(`/holidays?officeId=${val}`).subscribe(data=>this.holidaysData=data);
+  console.log(officeId);
+  console.log('reached on office changed');
+  return this.organizationservice.getHolidaysData(officeId);
+  //return this.httpclient.get(`/holidays?officeId=${officeId}`,{ responseType: 'text' }).subscribe();
 
     
-  console.log('reached function2');
+  //console.log('reached function2');
   
   
 }

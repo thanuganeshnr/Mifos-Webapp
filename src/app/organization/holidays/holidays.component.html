@@ -9,7 +9,7 @@
     </mat-form-field>
     </div>
     
-    <mat-select #showClosedAccounts placeholder="Select office" [(ngModel)]="empSelected" (ngModelChange)="onWriterChange($event)" >
+    <mat-select #showClosedAccounts placeholder="Select office" [(ngModel)]="empSelected" (ngModelChange)="onOfficeChange($event)" >
        <mat-option *ngFor="let office of officeData" [value]="office.id"  >
         {{ office.name }}
       </mat-option>

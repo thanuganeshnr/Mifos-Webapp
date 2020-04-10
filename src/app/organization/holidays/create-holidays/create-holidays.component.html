@@ -1,84 +1,64 @@
-<p>
-  create-holidays works!
-</p>
 <div class="container">
 
   <mat-card>
 
-    <form [formGroup]="glAccountForm" (ngSubmit)="submit()">
-
+    <form [formGroup]="holidaysForm" (ngSubmit)="submit()">
+      
       <mat-card-content>
+        <div fxLayout="column">
+        <mat-form-field >
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+      
+      
+        <mat-form-field >
+          <mat-label>Date From</mat-label>
+          <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="transactionDateFromPicker" [formControl]="DateFrom">
+          <mat-datepicker-toggle matSuffix [for]="transactionDateFromPicker"></mat-datepicker-toggle>
+          <mat-datepicker #transactionDateFromPicker></mat-datepicker>
+        </mat-form-field>
+        
+        <mat-form-field >
+          <mat-label>Date To</mat-label>
+          <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="transactionDateToPicker" [formControl]="DateTo">
+          <mat-datepicker-toggle matSuffix [for]="transactionDateToPicker"></mat-datepicker-toggle>
+          <mat-datepicker #transactionDateToPicker></mat-datepicker>
+        </mat-form-field>
+      
+        
+      
+        <mat-form-field>
+          <mat-label>Repayment schedule type</mat-label>
+          <mat-select formControlName="repaymentRescheduleType">
+            <mat-option *ngFor="let repaymentRescheduleType of repaymentRescheduleTypeData" [value]="repaymentRescheduleType.id">
+              {{ repaymentRescheduleType.value }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+        <mat-form-field >
+          <mat-label>Repayment scheduled to</mat-label>
+          <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="closingDatePicker" required formControlName="RepaymentScheduleTo">
+          <mat-datepicker-toggle matSuffix [for]="closingDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #closingDatePicker></mat-datepicker>
+         </mat-form-field>
 
-        <div fxLayout="row wrap" fxLayoutGap="2%" fxLayout.lt-md="column">
+         <mat-form-field >
+          <mat-label>Description</mat-label>
+          <input matInput formControlName="description">
+        </mat-form-field>
 
-          <mat-form-field fxFlex="48%">
-            <mat-label>Account Type</mat-label>
-            <mat-select required formControlName="type">
-              <mat-option *ngFor="let accountType of accountTypeData" [value]="accountType.id">
-                {{ accountType.value }}
-              </mat-option>
-            </mat-select>
-            <mat-error *ngIf="glAccountForm.controls.type.hasError('required')">
-              Account Type is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
+        <mat-form-field >
+          <mat-label>Select Applicable Office</mat-label>
+          <mat-select required formControlName="officeId" >
+            <mat-option *ngFor="let office of officeData" [value]="office.id"  >
+             {{ office.name }}
+           </mat-option>
+         </mat-select>
+        </mat-form-field>
 
-          <mat-form-field fxFlex="48%">
-            <mat-label>Account Name</mat-label>
-            <input matInput required formControlName="name">
-            <mat-error *ngIf="glAccountForm.controls.name.hasError('required')">
-              Account Name is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-
-          <mat-form-field fxFlex="48%">
-            <mat-label>Account Usage</mat-label>
-            <mat-select required formControlName="usage">
-              <mat-option *ngFor="let accountUsage of accountUsageData" [value]="accountUsage.id">
-                {{ accountUsage.value }}
-              </mat-option>
-            </mat-select>
-            <mat-error *ngIf="glAccountForm.controls.usage.hasError('required')">
-              Account Usage is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-
-          <mat-form-field fxFlex="48%">
-            <mat-label>GL Code</mat-label>
-            <input matInput required formControlName="glCode">
-            <mat-error *ngIf="glAccountForm.controls.glCode.hasError('required')">
-              GL Code is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-
-          <mat-form-field fxFlex="48%">
-            <mat-label>Parent</mat-label>
-            <mat-select formControlName="parentId">
-              <mat-option *ngFor="let parent of parentData" [value]="parent.id">
-                {{ parent.name }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <mat-form-field fxFlex="28%">
-            <mat-label>Tag</mat-label>
-            <mat-select formControlName="tagId">
-              <mat-option *ngFor="let tag of tagData" [value]="tag.id">
-                {{ tag.name }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <div fxFlex="18%" class="manual-entries-allowed-wrapper">
-            <mat-checkbox labelPosition="before" required formControlName="manualEntriesAllowed" class="manual-entries-allowed">
-              Manual Entries Allowed
-            </mat-checkbox>
-          </div>
-
-          <mat-form-field fxFlex="98%">
-            <mat-label>Description</mat-label>
-            <textarea matInput formControlName="description"></textarea>
-          </mat-form-field>
+        
 
         </div>
 
@@ -89,6 +69,7 @@
         <button mat-raised-button color="primary" >Submit</button>
       </mat-card-actions>
 
+      
     </form>
 
   </mat-card>

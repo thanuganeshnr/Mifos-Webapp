@@ -25,10 +25,10 @@ export class HolidaysDataResolver implements Resolve<Object> {
    * @returns {Observable<any>}
    */
   resolve(route: ActivatedRouteSnapshot): Observable<any> {
-    const employeeId  = route.paramMap.get('id');
-    console.log(employeeId);
+    const officeId  = route.paramMap.get('officeId');
+    console.log(officeId);
     console.log('reached data resolver');
-    return this.organizationService.getHolidaysData(employeeId);
+    return this.organizationService.getHolidaysData(officeId);
   }
   //resolve(route: ActivatedRouteSnapshot): Observable<any> {
     //const officeId  = route.paramMap.get('1');

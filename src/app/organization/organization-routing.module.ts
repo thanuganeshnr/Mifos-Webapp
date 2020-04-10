@@ -243,12 +243,15 @@ const routes: Routes = [
               holidays: HolidaysResolver,
               offices: OfficesResolver
             }
+            
           },
                     {
             path: 'create',
-            component: CreateHolidaysComponent,
+             component: CreateHolidaysComponent,
             data: { title: extract('Create Holidays'), breadcrumb: 'Create Holidays' },
-            
+            resolve: {
+              offices: OfficesResolver
+            }
           }
         ]
           

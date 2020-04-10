@@ -1,9 +1,18 @@
 <mat-card class="cont">
+  <h2> Close Group</h2><hr>
   <mat-form-field class="grpline">
-    <input type="text" matInput placeholder="Closure Date *" class="placeholder">
-    
-  </mat-form-field>
+    <input type="text" matInput placeholder="Closure Date *" class="placeholder">  
+  </mat-form-field><br>
   <mat-form-field class="grpline">
-      <input type="text" matInput placeholder="Closure Reason *" class="placeholder">
-  </mat-form-field>
+      
+    <mat-label>Closure Reason *</mat-label>
+    <mat-select >
+      <mat-option >
+        
+      </mat-option>
+    </mat-select>
+  </mat-form-field><br>
+  <button mat-raised-button class="cancel" color="primary"> Cancel</button>
+  <button mat-raised-button class="confirm" color="primary"> Confirm</button>
+
 </mat-card>

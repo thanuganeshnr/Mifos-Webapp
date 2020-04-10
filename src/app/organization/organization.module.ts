@@ -27,6 +27,7 @@ import { CreateEmployeeComponent } from './employees/create-employee/create-empl
 import { CreatePaymentTypeComponent } from './payment-types/create-payment-type/create-payment-type.component';
 import { ViewEmployeeComponent } from './employees/view-employee/view-employee.component';
 import { HolidaysComponent } from './holidays/holidays.component';
+import { CreateHolidaysComponent } from './holidays/create-holidays/create-holidays.component';
 
 /**
  * Organization Module
@@ -59,7 +60,8 @@ import { HolidaysComponent } from './holidays/holidays.component';
     CreateEmployeeComponent,
     CreatePaymentTypeComponent,
     ViewEmployeeComponent,
-    HolidaysComponent
+    HolidaysComponent,
+    CreateHolidaysComponent
   ]
 })
 export class OrganizationModule { }

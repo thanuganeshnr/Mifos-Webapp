@@ -1,0 +1,77 @@
+<div class="container">
+
+  <mat-card>
+
+    <form [formGroup]="holidaysForm" (ngSubmit)="submit()">
+      
+      <mat-card-content>
+        <div fxLayout="column">
+        <mat-form-field >
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+      
+      
+        <mat-form-field >
+          <mat-label>Date From</mat-label>
+          <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="transactionDateFromPicker" [formControl]="DateFrom">
+          <mat-datepicker-toggle matSuffix [for]="transactionDateFromPicker"></mat-datepicker-toggle>
+          <mat-datepicker #transactionDateFromPicker></mat-datepicker>
+        </mat-form-field>
+        
+        <mat-form-field >
+          <mat-label>Date To</mat-label>
+          <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="transactionDateToPicker" [formControl]="DateTo">
+          <mat-datepicker-toggle matSuffix [for]="transactionDateToPicker"></mat-datepicker-toggle>
+          <mat-datepicker #transactionDateToPicker></mat-datepicker>
+        </mat-form-field>
+      
+        
+      
+        <mat-form-field>
+          <mat-label>Repayment schedule type</mat-label>
+          <mat-select formControlName="repaymentRescheduleType">
+            <mat-option *ngFor="let repaymentRescheduleType of repaymentRescheduleTypeData" [value]="repaymentRescheduleType.id">
+              {{ repaymentRescheduleType.value }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+        <mat-form-field >
+          <mat-label>Repayment scheduled to</mat-label>
+          <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="closingDatePicker" required formControlName="RepaymentScheduleTo">
+          <mat-datepicker-toggle matSuffix [for]="closingDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #closingDatePicker></mat-datepicker>
+         </mat-form-field>
+
+         <mat-form-field >
+          <mat-label>Description</mat-label>
+          <input matInput formControlName="description">
+        </mat-form-field>
+
+        <mat-form-field >
+          <mat-label>Select Applicable Office</mat-label>
+          <mat-select required formControlName="officeId" >
+            <mat-option *ngFor="let office of officeData" [value]="office.id"  >
+             {{ office.name }}
+           </mat-option>
+         </mat-select>
+        </mat-form-field>
+
+        
+
+        </div>
+
+      </mat-card-content>
+
+      <mat-card-actions fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="5px">
+        <button type="button" mat-raised-button >Cancel</button>
+        <button mat-raised-button color="primary" >Submit</button>
+      </mat-card-actions>
+
+      
+    </form>
+
+  </mat-card>
+
+</div>

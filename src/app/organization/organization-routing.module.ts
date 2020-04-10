@@ -47,7 +47,8 @@ import { PasswordPreferencesTemplateResolver } from './password-preferences/pass
 import { EntityDataTableChecksResolver } from './entity-data-table-checks/entity-data-table-checks.resolver';
 import { WorkingDaysResolver } from './working-days/working-days.resolver';
 import { HolidaysResolver } from './holidays/holidays.resolver';
-
+import { CreateHolidaysComponent } from './holidays/create-holidays/create-holidays.component';
+import { HolidaysDataResolver } from './holidays/holidaysData.resolver';
 /** Organization Routes */
 const routes: Routes = [
   Route.withShell([
@@ -232,12 +233,28 @@ const routes: Routes = [
           }
         },
         {path: 'holidays',
-        component: HolidaysComponent,
+        
         data: { title: extract('Holidays'), breadcrumb: 'Manage Holidays' },
-          resolve: {
-            holidays: HolidaysResolver,
-            offices: OfficesResolver
+        children: [
+          {
+            path: '',
+            component: HolidaysComponent,
+            resolve: {
+              holidays: HolidaysResolver,
+              offices: OfficesResolver
+            }
+            
+          },
+                    {
+            path: 'create',
+             component: CreateHolidaysComponent,
+            data: { title: extract('Create Holidays'), breadcrumb: 'Create Holidays' },
+            resolve: {
+              offices: OfficesResolver
+            }
           }
+        ]
+          
         },
       
       
@@ -270,7 +287,8 @@ const routes: Routes = [
     PasswordPreferencesTemplateResolver,
     EntityDataTableChecksResolver,
     WorkingDaysResolver,
-    HolidaysResolver
+    HolidaysResolver,
+    HolidaysDataResolver
   ]
 })
 export class OrganizationRoutingModule { }

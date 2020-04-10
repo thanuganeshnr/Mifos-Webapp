@@ -74,8 +74,27 @@ export class OrganizationService {
    * @returns {Observable<any>} Holidays data
    */
   getHolidays(): Observable<any> {
+    console.log('reached service');
     return this.http.get('/holidays?officeId=1');
   }
+/**
+   * @param {string} officeId Office ID of office.
+   * @returns {Observable<any>} Office.
+   */
+  getHolidaysData(officeId: string): Observable<any> {
+    console.log('reached service get holiday Data');
+    console.log('value on service:'+officeId)
+    return this.http.get(`/holidays?officeId=${officeId}`);
+  }
+
+ // /**
+   //* @param {string} officeId Employee ID of employee.
+  // * @returns {Observable<any>} Employee.
+  // */
+  //getHolidays(officeId: string): Observable<any> {
+  //  return this.http.get(`/holidays?officeId=${officeId}`);
+ // }
+
 
   /**
    * @returns {Observable<any>} SMS Campaigns data

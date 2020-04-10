@@ -1,0 +1,32 @@
+<form [formGroup]="SavingsChargesForm">
+
+  <div fxLayout="row wrap" fxLayoutGap="2%" fxLayout.lt-md="column" fxLayoutAlign.gt-sm="start center">
+
+    <mat-form-field fxFlex="48%">
+      <mat-label>Charge</mat-label>
+      <mat-select >
+        <mat-option >
+         
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div fxFlex="48%" fxFlexAlign="center">
+      <button type="button" mat-raised-button color="primary">
+        <fa-icon icon="plus"></fa-icon>&nbsp;&nbsp;
+        Add
+      </button>
+    </div>
+</div>
+
+  <div fxLayout="row" class="margin-t" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="2%">
+    <button mat-raised-button >
+      <fa-icon icon="arrow-left"></fa-icon>&nbsp;&nbsp;
+      Previous
+    </button>
+    <button mat-raised-button >
+      Next&nbsp;&nbsp;
+      <fa-icon icon="arrow-right"></fa-icon>
+    </button>
+  </div>
+
+</form>

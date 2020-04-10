@@ -1,0 +1,58 @@
+<div class="container">
+  <mat-horizontal-stepper class="mat-elevation-z8" labelPosition="bottom" #loanProductStepper>
+
+  <ng-template matStepperIcon="number">
+    <fa-icon icon="pencil-alt" size="sm"></fa-icon>
+  </ng-template>
+
+  <ng-template matStepperIcon="edit">
+    <fa-icon icon="pencil-alt" size="sm"></fa-icon>
+  </ng-template>
+
+  <ng-template matStepperIcon="done">
+    <fa-icon icon="check" size="sm"></fa-icon>
+  </ng-template>
+
+  <ng-template matStepperIcon="error">
+    <fa-icon icon="exclamation-triangle" size="lg"></fa-icon>
+  </ng-template>
+
+  <ng-template matStepperIcon="preview">
+    <fa-icon icon="eye" size="sm"></fa-icon>
+  </ng-template>
+
+  <mat-step >
+
+    <ng-template matStepLabel>DETAILS</ng-template>
+
+    <mifosx-savings-application-details-step ></mifosx-savings-application-details-step>
+
+  </mat-step>
+
+  <mat-step>
+
+    <ng-template matStepLabel>TERMS</ng-template>
+
+    <mifosx-savings-application-terms-step ></mifosx-savings-application-terms-step>
+
+  </mat-step>
+
+  <mat-step >
+
+    <ng-template matStepLabel>CHARGES</ng-template>
+
+    <mifosx-savings-application-charges-step ></mifosx-savings-application-charges-step>
+
+  </mat-step>
+
+  <mat-step>
+
+    <ng-template matStepLabel>PREVIEW</ng-template>
+
+    <mifosx-savings-application-preview-step ></mifosx-savings-application-preview-step>
+
+  </mat-step>
+
+
+</mat-horizontal-stepper>
+</div>

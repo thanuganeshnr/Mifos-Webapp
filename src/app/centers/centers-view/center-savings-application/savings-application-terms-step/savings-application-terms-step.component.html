@@ -1,0 +1,96 @@
+<form [formGroup]="SavingsTermsForm">
+
+  <div fxLayout="row wrap" fxLayoutGap="2%" fxLayout.lt-md="column" fxLayoutAlign.gt-sm="start center">
+    <mat-form-field fxFlex="48%">
+      <mat-label>Currency</mat-label>
+      <input matInput formControlName="shortName" value="Indian Rupee(₹)" >
+      
+    </mat-form-field>
+    <mat-form-field fxFlex="48%">
+      <mat-label>Decimal Places</mat-label>
+      <input matInput formControlName="shortName" value="2" >
+      
+    </mat-form-field>
+    <mat-form-field fxFlex="48%">
+      <mat-label>Nominal Annual Interest</mat-label>
+      <input matInput formControlName="shortName" value="2" >
+      
+    </mat-form-field>
+    
+    <mat-form-field fxFlex="48%">
+      <mat-label>Interest compounding period </mat-label>
+      <mat-select >
+        <mat-option >Daily</mat-option>
+        <mat-option >Monthly</mat-option>
+        <mat-option >Quartely</mat-option>
+        <mat-option >Semi Annual</mat-option>
+        <mat-option >Annualy</mat-option> 
+        
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field fxFlex="48%">
+      <mat-label>Currencies in multiples of</mat-label>
+      <input matInput formControlName="shortName" value="1" >
+    </mat-form-field>
+        <mat-form-field fxFlex="48%">
+    <mat-label>Interest posting period </mat-label>
+    <mat-select >
+      <mat-option >Monthly</mat-option>
+      <mat-option >Quartely</mat-option> 
+      <mat-option >Bi Annualy</mat-option> 
+      <mat-option >Annualy</mat-option>   
+    </mat-select>
+  </mat-form-field>   
+      
+    
+    <mat-form-field fxFlex="48%">
+      <mat-label>Interest calculated using </mat-label>
+      <mat-select >
+        <mat-option >Daily Balance</mat-option>
+        <mat-option >Average Daily Balance</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+  <mat-form-field fxFlex="48%">
+    <mat-label>Days in year </mat-label>
+    <mat-select >
+      <mat-option >365 Days</mat-option>
+      <mat-option >360 Days</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+
+
+
+    <mat-form-field fxFlex="48%">
+      <mat-label>Minimum opening balance</mat-label>
+      <input matInput formControlName="shortName" >
+      
+    </mat-form-field>
+
+    <mat-form-field fxFlex="48%">
+      <mat-label>Lock-in period
+      </mat-label>
+      <input matInput formControlName="shortName" >
+      
+    </mat-form-field>
+
+
+  
+
+  </div>
+
+  <div fxLayout="row" class="margin-t" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="2%">
+    <button mat-raised-button disabled>
+      <fa-icon icon="arrow-left"></fa-icon>&nbsp;&nbsp;
+      Previous
+    </button>
+    <button mat-raised-button >
+      Next&nbsp;&nbsp;
+      <fa-icon icon="arrow-right"></fa-icon>
+    </button>
+  </div>
+
+</form>

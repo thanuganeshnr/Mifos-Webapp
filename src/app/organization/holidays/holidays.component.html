@@ -1,7 +1,5 @@
-<p>
-  holidays1 works!
-</p>
 <mat-card class="container">
+  
 <div fxLayout="row" fxLayoutAlign="start center">
   <div class="search-box">
     <mat-form-field>
@@ -9,12 +7,16 @@
     </mat-form-field>
     </div>
     
-    <mat-select #showClosedAccounts placeholder="Select office" [(ngModel)]="empSelected" (ngModelChange)="onOfficeChange($event)" >
+    
+    
+    <mat-select [formControl]="officeTypeFilter" placeholder="select office" (selectionChange)="officeFilter($event.value, 'manualEntriesOnly')" >
        <mat-option *ngFor="let office of officeData" [value]="office.id"  >
         {{ office.name }}
       </mat-option>
     </mat-select>
     &nbsp;&nbsp;&nbsp;
+  
+
     <div class="action-button" fxLayoutGap="25px">
     
     <button mat-raised-button color="primary" [routerLink]="['create']">
@@ -22,7 +24,7 @@
     </button>
   </div>
 </div>
-<table mat-table [dataSource]="dataSource" matSort>
+<table mat-table [dataSource]="dataSource" matSort >
 
   <!-- Holiday Name -->
   <ng-container matColumnDef="holidayname">
@@ -66,4 +68,5 @@
   </tr>
 </table>
 <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+
 </mat-card>

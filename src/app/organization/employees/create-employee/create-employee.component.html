@@ -54,7 +54,7 @@
           <mat-form-field>
             <mat-label>Joining Date</mat-label>
             <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="joiningDatePicker" required formControlName="joiningDate">
-            <mat-datepicker-toggle matSuffix [for]="joiningDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker-toggle matSuffix [for]="joiningDatePicker" datepicker-pop="dd MMMM yyyy"></mat-datepicker-toggle>
             <mat-datepicker #joiningDatePicker></mat-datepicker>
             <mat-error *ngIf="employeeForm.controls.joiningDate.hasError('required')">
               Joining Date is <strong>required</strong>

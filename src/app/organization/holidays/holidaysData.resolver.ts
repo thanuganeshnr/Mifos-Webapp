@@ -30,6 +30,7 @@ export class HolidaysDataResolver implements Resolve<Object> {
     console.log('reached data resolver');
     return this.organizationService.getHolidaysData(officeId);
   }
+  
   //resolve(route: ActivatedRouteSnapshot): Observable<any> {
     //const officeId  = route.paramMap.get('1');
     //return this.organizationService.getHolidays(officeId);

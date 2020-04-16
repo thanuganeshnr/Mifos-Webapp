@@ -1,20 +1,22 @@
 import { Component, OnInit, ViewChild,AfterViewInit, ChangeDetectorRef  } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort, MatSelect } from '@angular/material';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, merge } from 'rxjs';
+import { Observable, merge, BehaviorSubject } from 'rxjs';
 import { OrganizationService } from '../organization.service';
 import { tap, subscribeOn } from 'rxjs/operators';
 import { HolidaysDataResolver } from './holidaysData.resolver';
 import { stringToKeyValue } from '@angular/flex-layout/extended/typings/style/style-transforms';
 import { setTNodeAndViewData } from '@angular/core/src/render3/state';
+import { FormControl, FormGroup, FormArray } from '@angular/forms';
+import { OfficesResolver } from '../offices/offices.resolver';
 
 @Component({
   selector: 'mifosx-holidays',
   templateUrl: './holidays.component.html',
   styleUrls: ['./holidays.component.scss']
 })
-export class HolidaysComponent implements OnInit  {
+export class HolidaysComponent implements OnInit   {
    /** Holiday data. */
    holidaysData: any;
    /** Columns to be displayed in holiday table. */
@@ -23,8 +25,26 @@ export class HolidaysComponent implements OnInit  {
    dataSource: MatTableDataSource<any>;
    /** Office data. */
   officeData: any;
+   /** Holiday office filter. */
+   private journalEntriesSubject = new BehaviorSubject<any[]>([]);
+   private recordsSubject = new BehaviorSubject<number>(0);
+   public records$ = this.recordsSubject.asObservable();
+   
+   filterHolidaysBy = [
+    {
+      type: 'officeId',
+      value: '',
+    },
+      {
+        type: 'manualEntriesOnly',
+        value: ''
+      }
+    
+  ];
 
-   /** Paginator for Holiday table. */
+  /** Entry type filter form control. */
+  officeTypeFilter = new FormControl('');
+  /** Paginator for Holiday table. */
   @ViewChild(MatPaginator) paginator: MatPaginator;
   /** Sorter for Holiday table. */
   @ViewChild(MatSort) sort: MatSort;
@@ -44,6 +64,7 @@ export class HolidaysComponent implements OnInit  {
   constructor(private route: ActivatedRoute,private httpclient:HttpClient,private organizationservice:OrganizationService,private HolidaysDataResolver:HolidaysDataResolver) { 
     this.route.data.subscribe(( data: { holidays: any ,offices: any}) => {
       this.holidaysData = data.holidays;
+      console.log(this.holidaysData);
       this.officeData = data.offices;
       console.log('reached constructor');
     });
@@ -71,6 +92,32 @@ export class HolidaysComponent implements OnInit  {
         console.log('reached onchanges');
   }
   
+  loadHolidaysPage()
+{
+  console.log('reached load office holidays');
+  
+   //this.HolidaysDataResolver.getHol(this.filterHolidaysBy.toString());
+  
+}  
+officeFilter(filterValue: string, property: string){
+  this.paginator.pageIndex = 0;
+  const findIndex = this.filterHolidaysBy.findIndex(filter => filter.type === property);
+  this.filterHolidaysBy[findIndex].value = filterValue;
+  console.log('reached office filter');
+  console.log(this.officeTypeFilter.value);
+  //this.HolidaysDataResolver.resolve();
+  this.journalEntriesSubject.next([]);
+  this.organizationservice.getHolidaysData(this.officeTypeFilter.value).subscribe((holidays: any) =>{
+   this.journalEntriesSubject.next(holidays);
+   this.holidaysData= holidays;
+   console.log(this.holidaysData);
+    console.log(holidays);
+    // this.recordsSubject.next(journalEntries.bb);
+    //console.log(journalEntries.bb);
+  });
+  //this.HolidaysDataResolver.resolve(this.officeTypeFilter.value.officeId).subscribe();
+ //this.loadHolidaysPage();
+}
 
   
   /**

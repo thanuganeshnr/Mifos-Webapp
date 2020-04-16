@@ -30,6 +30,7 @@ import { CreateOfficeComponent } from './offices/create-office/create-office.com
 import { CreatePaymentTypeComponent } from './payment-types/create-payment-type/create-payment-type.component';
 import { HolidaysComponent } from './holidays/holidays.component';
 
+
 /** Custom Resolvers */
 import { LoanProvisioningCriteriaResolver } from './loan-provisioning-criteria/loan-provisioning-criteria.resolver';
 import { OfficesResolver } from './offices/offices.resolver';
@@ -49,6 +50,9 @@ import { WorkingDaysResolver } from './working-days/working-days.resolver';
 import { HolidaysResolver } from './holidays/holidays.resolver';
 import { CreateHolidaysComponent } from './holidays/create-holidays/create-holidays.component';
 import { HolidaysDataResolver } from './holidays/holidaysData.resolver';
+import { HolTemResolver } from './holidays/HolTem.resolver';
+
+
 /** Organization Routes */
 const routes: Routes = [
   Route.withShell([
@@ -240,7 +244,7 @@ const routes: Routes = [
             path: '',
             component: HolidaysComponent,
             resolve: {
-              holidays: HolidaysResolver,
+              holidays: HolidaysDataResolver,
               offices: OfficesResolver
             }
             
@@ -250,7 +254,8 @@ const routes: Routes = [
              component: CreateHolidaysComponent,
             data: { title: extract('Create Holidays'), breadcrumb: 'Create Holidays' },
             resolve: {
-              offices: OfficesResolver
+              offices: OfficesResolver,
+              template:HolTemResolver
             }
           }
         ]
@@ -288,7 +293,8 @@ const routes: Routes = [
     EntityDataTableChecksResolver,
     WorkingDaysResolver,
     HolidaysResolver,
-    HolidaysDataResolver
+    HolidaysDataResolver,
+    HolTemResolver
   ]
 })
 export class OrganizationRoutingModule { }

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup,FormBuilder, Validators } from '@angular/forms';
+import { DatePipe } from '@angular/common';
+import { OrganizationService } from '../../organization.service';
+import { HolidaysComponent } from '../holidays.component';
 
 @Component({
   selector: 'mifosx-create-holidays',
@@ -12,6 +15,8 @@ export class CreateHolidaysComponent implements OnInit {
  officeData: any;
  /** holiday form. */
  holidaysForm: FormGroup;
+ /** Reschedule Type data. */
+ rescheduleTypeData: any;
  
  
  
@@ -21,9 +26,10 @@ export class CreateHolidaysComponent implements OnInit {
    * @param {FormBuilder} formBuilder Form Builder.
    */
  
- constructor(private route: ActivatedRoute,private formBuilder: FormBuilder) {
-  this.route.data.subscribe(( data: { offices: any}) => {
+ constructor(private route: ActivatedRoute,private formBuilder: FormBuilder,private datePipe: DatePipe,private organizationService: OrganizationService,private router: Router) {
+  this.route.data.subscribe(( data: { offices: any,template:any}) => {
     this.officeData = data.offices;
+    this.rescheduleTypeData=data.template;
     console.log('reached constructor');
   });
 
@@ -40,13 +46,32 @@ export class CreateHolidaysComponent implements OnInit {
    */
   createHolidayForm() {
     this.holidaysForm = this.formBuilder.group({
-      'officeId': ['', Validators.required],
       'name': ['', [Validators.required, Validators.pattern('(^[A-z]).*')]],
+      'fromDate': ['', Validators.required],
+      'toDate': ['', Validators.required], 
+      'reschedulingType': ['', Validators.required],
+      'repaymentsRescheduledTo': ['', Validators.required],
       'description': ['', [Validators.required, Validators.pattern('(^[A-z]).*')]],
-      'DateTo': ['', Validators.required], 
-      'DateFrom': ['', Validators.required],
-      'RepaymentScheduleTo': ['', Validators.required],
-      'repaymentRescheduleType': ['', Validators.required]
+      'offices': ['', Validators.required],
+      
+        
+      
+      
+      
+    });
+  }
+  submit(){
+    
+    const dateFormat = 'yyyy-MM-dd';
+    const holiday = this.holidaysForm.value;
+    holiday.locale = 'en';
+    holiday.dateFormat = dateFormat;
+    holiday.toDate= this.datePipe.transform(new Date(),"yyyy-MM-dd");
+    holiday.repaymentsRescheduledTo=this.datePipe.transform(new Date(),"yyyy-MM-dd");
+    holiday.fromDate=this.datePipe.transform(new Date(),"yyyy-MM-dd");
+    
+    this.organizationService.createHolidays(holiday).subscribe((response: any) => {
+      this.router.navigate(['../'], { relativeTo: this.route });
     });
   }
 }

@@ -2,47 +2,65 @@
 
   <mat-card>
 
-    <form [formGroup]="holidaysForm" (ngSubmit)="submit()">
+    <form [formGroup]="holidaysForm" (ngSubmit)="submit()" >
       
       <mat-card-content>
         <div fxLayout="column">
         <mat-form-field >
           <mat-label>Name</mat-label>
-          <input matInput formControlName="name">
+          <input matInput formControlName="name" required>
+          <mat-error *ngIf="holidaysForm.controls.name.hasError('required')">
+            Holiday Name is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="holidaysForm.controls.name.hasError('pattern')">
+            Holiday Name <strong>cannot</strong> begin with a special character or number
+          </mat-error>
         </mat-form-field>
       
       
         <mat-form-field >
           <mat-label>Date From</mat-label>
-          <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="transactionDateFromPicker" [formControl]="DateFrom">
+          <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="transactionDateFromPicker" required formControlName="fromDate">
           <mat-datepicker-toggle matSuffix [for]="transactionDateFromPicker"></mat-datepicker-toggle>
           <mat-datepicker #transactionDateFromPicker></mat-datepicker>
+          <mat-error *ngIf="holidaysForm.controls.fromDate.hasError('required')">
+            Date is <strong>required</strong>
+         </mat-error> 
         </mat-form-field>
         
         <mat-form-field >
           <mat-label>Date To</mat-label>
-          <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="transactionDateToPicker" [formControl]="DateTo">
+          <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="transactionDateToPicker" required formControlName="toDate">
           <mat-datepicker-toggle matSuffix [for]="transactionDateToPicker"></mat-datepicker-toggle>
           <mat-datepicker #transactionDateToPicker></mat-datepicker>
+          <mat-error *ngIf="holidaysForm.controls.toDate.hasError('required')">
+            Date is <strong>required</strong>
+         </mat-error> 
         </mat-form-field>
       
         
       
         <mat-form-field>
           <mat-label>Repayment schedule type</mat-label>
-          <mat-select formControlName="repaymentRescheduleType">
-            <mat-option *ngFor="let repaymentRescheduleType of repaymentRescheduleTypeData" [value]="repaymentRescheduleType.id">
+          <mat-select formControlName="reschedulingType" required>
+            <mat-option *ngFor="let repaymentRescheduleType of rescheduleTypeData" [value]="repaymentRescheduleType.id">
               {{ repaymentRescheduleType.value }}
             </mat-option>
           </mat-select>
+          <mat-error *ngIf="holidaysForm.controls.reschedulingType.hasError('required')">
+            Type is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
         
         <mat-form-field >
           <mat-label>Repayment scheduled to</mat-label>
-          <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="closingDatePicker" required formControlName="RepaymentScheduleTo">
+          <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="closingDatePicker" required formControlName="repaymentsRescheduledTo">
           <mat-datepicker-toggle matSuffix [for]="closingDatePicker"></mat-datepicker-toggle>
           <mat-datepicker #closingDatePicker></mat-datepicker>
-         </mat-form-field>
+          <mat-error *ngIf="holidaysForm.controls.repaymentsRescheduledTo.hasError('required')">
+             Date is <strong>required</strong>
+          </mat-error> 
+        </mat-form-field>
 
          <mat-form-field >
           <mat-label>Description</mat-label>
@@ -51,21 +69,23 @@
 
         <mat-form-field >
           <mat-label>Select Applicable Office</mat-label>
-          <mat-select required formControlName="officeId" >
-            <mat-option *ngFor="let office of officeData" [value]="office.id"  >
+          <mat-select multiple required formControlName="offices" >
+            <mat-option *ngFor="let office of officeData" [value]="office.id" >
              {{ office.name }}
            </mat-option>
          </mat-select>
+         <mat-error *ngIf="holidaysForm.controls.offices.hasError('required')">
+          Office is <strong>required</strong>
+        </mat-error>
         </mat-form-field>
 
-        
-
+                
         </div>
 
       </mat-card-content>
 
       <mat-card-actions fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="5px">
-        <button type="button" mat-raised-button >Cancel</button>
+        <button type="button" mat-raised-button [routerLink]="['../']">Cancel</button>
         <button mat-raised-button color="primary" >Submit</button>
       </mat-card-actions>
 

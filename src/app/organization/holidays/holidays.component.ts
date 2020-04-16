@@ -112,6 +112,7 @@ officeFilter(filterValue: string, property: string){
    this.holidaysData= holidays;
    console.log(this.holidaysData);
     console.log(holidays);
+    this.setHolidays();
     // this.recordsSubject.next(journalEntries.bb);
     //console.log(journalEntries.bb);
   });

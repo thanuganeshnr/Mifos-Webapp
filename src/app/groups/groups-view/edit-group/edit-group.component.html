@@ -1,16 +1,29 @@
 <mat-card class="cont">
+  <h2>Edit Group</h2><hr>
   <mat-form-field class="editline">
-    <input type="text" matInput placeholder="Name *" class="placeholder">
+      <mat-label>Name</mat-label>
+      <input required matInput formControlName="name">
+     </mat-form-field>
+
+  <mat-form-field class="editline">   
+    <mat-label>Select Staff *</mat-label>
+    <mat-select >
+      <mat-option >
+        
+      </mat-option>
+    </mat-select>
   </mat-form-field><br>
+
   <mat-form-field class="editline">
-    <input type="text" matInput placeholder="Staff *" class="placeholder" >
-  </mat-form-field><br>
-  <mat-form-field class="editline">
-    <input  matInput  placeholder="Activation Date *" class="placeholder">
-  </mat-form-field><br>
-  <mat-form-field class="editline">
-    <input matInput placeholder="External Id" class="placeholder">
+    <mat-label>External Id</mat-label>
+    <input required matInput formControlName="externalid">
   </mat-form-field>
-  <button mat-raised-button class="cancelbutton">Cancel</button>
-  <button mat-raised-button class="submitbutton">Submit</button>
+
+  <mat-form-field class="editline">
+    <mat-label>Activation Date</mat-label>
+    <input required matInput formControlName="activationdate">
+  </mat-form-field>
+
+  <button mat-raised-button class="cancelbutton" color="primary">Cancel</button>
+  <button mat-raised-button class="submitbutton" color="primary">Submit</button>
 </mat-card>

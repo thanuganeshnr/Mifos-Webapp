@@ -1,0 +1,56 @@
+<form [formGroup]="SavingsDetailsForm">
+
+  <div fxLayout="row wrap" fxLayoutGap="2%" fxLayout.lt-md="column" fxLayoutAlign.gt-sm="start center">
+
+    <mat-form-field fxFlex="48%">
+      <mat-label>PRODUCT</mat-label>
+      <mat-select >
+        <mat-option >
+         
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field fxFlex="48%">
+      <mat-label>Submitted On</mat-label>
+      <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="startDatePicker" formControlName="startDate">
+      <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #startDatePicker></mat-datepicker>
+    </mat-form-field>
+
+
+    <mat-form-field fxFlex="48%">
+      <mat-label>Field Officer</mat-label>
+      <mat-select >
+        <mat-option >
+         
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field fxFlex="48%">
+      <mat-label>External Id</mat-label>
+      <input matInput formControlName="shortName" >
+      
+    </mat-form-field>
+
+ 
+
+
+  
+
+  </div>
+
+  <div fxLayout="row" class="margin-t" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="2%">
+    <button mat-raised-button disabled>
+      <fa-icon icon="arrow-left"></fa-icon>&nbsp;&nbsp;
+      Previous
+    </button>
+    <button mat-raised-button >
+      Next&nbsp;&nbsp;
+      <fa-icon icon="arrow-right"></fa-icon>
+    </button>
+  </div>
+
+</form>

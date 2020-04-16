@@ -12,7 +12,9 @@ import { CentersViewComponent } from './centers-view/centers-view.component';
 import { GeneralTabComponent } from './centers-view/general-tab/general-tab.component';
 import { NotesTabComponent } from './centers-view/notes-tab/notes-tab.component';
 import { EditCenterComponent } from './centers-view/edit-center/edit-center.component';
-
+import { CenterSavingsApplicationComponent } from './centers-view/center-savings-application/center-savings-application.component';
+import { AddGroupComponent } from './centers-view/add-group/add-group.component';
+import { ManageGroupComponent } from './centers-view/manage-group/manage-group.component';
 const routes: Routes = [
   Route.withShell([
 
@@ -46,6 +48,19 @@ const routes: Routes = [
             path: 'editcenter',
             component: EditCenterComponent,
             data: { title: extract('Edit Center'), breadcrumb: 'Edit Center', routeParamBreadcrumb: false }
+          },
+          {
+            path: 'savingapplication',
+            component: CenterSavingsApplicationComponent,
+            data: { title: extract('Saving Application'), breadcrumb: 'Savings Application', routeParamBreadcrumb: false }
+          }, {
+            path: 'addgroup',
+            component: AddGroupComponent,
+            data: { title: extract('Add Group'), breadcrumb: 'Add Group', routeParamBreadcrumb: false }
+          }, {
+            path: 'managegroup',
+            component: ManageGroupComponent,
+            data: { title: extract('Manage Group'), breadcrumb: 'Manage Group', routeParamBreadcrumb: false }
           }
       ]
     }

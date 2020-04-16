@@ -13,9 +13,9 @@
 </mat-card-title-group>
   <mat-card-actions class="center-actions">
     <button mat-raised-button [routerLink]="['../editcenter']">Edit</button>
-    <button mat-raised-button>+ Add Group</button>
-    <button mat-raised-button>Manage Group</button>
-    <button mat-raised-button>Center Saving Application</button>
+    <button mat-raised-button  [routerLink]="['../addgroup']">+ Add Group</button>
+    <button mat-raised-button  [routerLink]="['../managegroup']">Manage Group</button>
+    <button mat-raised-button [routerLink]="['../savingapplication']">Center Saving Application</button>
     <button mat-raised-button [matMenuTriggerFor]="More">More</button>
     <mat-menu #More="matMenu">
       <button mat-menu-item>Assign Staff</button>

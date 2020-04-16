@@ -25,6 +25,7 @@ import { SingleRowComponent } from './clients-view/datatable-tab/single-row/sing
 import { AddressTabComponent } from './clients-view/address-tab/address-tab.component';
 
 
+
 /**
  * Clients Module
  *

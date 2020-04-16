@@ -18,11 +18,11 @@
     <button mat-raised-button [routerLink]="['../savingapplication']">Center Saving Application</button>
     <button mat-raised-button [matMenuTriggerFor]="More">More</button>
     <mat-menu #More="matMenu">
-      <button mat-menu-item>Assign Staff</button>
-      <button mat-menu-item>Close</button>
-      <button mat-menu-item>Attach Meeting</button>
-      <button mat-menu-item>Self Assignment History</button>
-    </mat-menu>
+      <button mat-menu-item [routerLink]="['../attendance']">Attendance</button>
+      <button mat-menu-item [routerLink]="['../assignstaff']">Assign Staff</button>
+      <button mat-menu-item [routerLink]="['../closecenter']">Close</button>
+      <button mat-menu-item>Staff Assignment History</button>
+     </mat-menu>
   </mat-card-actions>
 </mat-card-header>
 <mat-card-content>

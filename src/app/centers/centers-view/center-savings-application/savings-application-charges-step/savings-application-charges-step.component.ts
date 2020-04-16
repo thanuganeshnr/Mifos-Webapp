@@ -8,11 +8,7 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./savings-application-charges-step.component.scss']
 })
 export class SavingsApplicationChargesStepComponent implements OnInit {
-  SavingsChargesForm: FormGroup;
-  chargeData: any;
-  overdueChargeData: any;
 
-  chargesDataSource: {}[];
 
   constructor() { }
 

@@ -1,0 +1,43 @@
+<div class="container">
+
+  <mat-card>
+
+    <form>
+
+      <mat-card-content>
+
+        <div fxLayout="column">
+
+
+          <mat-form-field>
+            <mat-label>Closure Date</mat-label>
+            <input matInput  required [matDatepicker]="openedOnDatePicker">
+            <mat-datepicker-toggle matSuffix [for]="openedOnDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #openedOnDatePicker></mat-datepicker>
+          </mat-form-field>
+
+       
+
+          <mat-form-field>
+            <mat-label>Closure Reason</mat-label>
+            <mat-select required >
+              <mat-option>
+            
+              </mat-option>
+            </mat-select>
+           
+          </mat-form-field>
+
+        </div>    
+      </mat-card-content>
+
+      <mat-card-actions fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="5px">
+        <button type="button" mat-raised-button [routerLink]="['../']">Cancel</button>
+        <button mat-raised-button color="primary" disabled>Confirm</button>
+      </mat-card-actions>
+
+    </form>
+
+  </mat-card>
+
+</div>

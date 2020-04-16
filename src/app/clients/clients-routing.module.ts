@@ -47,6 +47,7 @@ const routes: Routes = [
         path: '',
         component: ClientsComponent,
       },
+
       {
         path: ':clientId',
         component: ClientsViewComponent,
@@ -110,6 +111,8 @@ const routes: Routes = [
               }
             ]
           },
+        
+
           {
             path: 'identities',
             component: IdentitiesTabComponent,

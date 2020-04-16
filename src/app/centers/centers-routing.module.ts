@@ -15,6 +15,11 @@ import { EditCenterComponent } from './centers-view/edit-center/edit-center.comp
 import { CenterSavingsApplicationComponent } from './centers-view/center-savings-application/center-savings-application.component';
 import { AddGroupComponent } from './centers-view/add-group/add-group.component';
 import { ManageGroupComponent } from './centers-view/manage-group/manage-group.component';
+import { CloseCenterComponent } from './centers-view/close-center/close-center.component';
+import { AttendanceComponent } from './centers-view/attendance/attendance.component';
+import { CreateCenterComponent } from './centers-view/create-center/create-center.component';
+import { AssignStaffComponent } from './centers-view/assign-staff/assign-staff.component';
+
 const routes: Routes = [
   Route.withShell([
 
@@ -61,6 +66,22 @@ const routes: Routes = [
             path: 'managegroup',
             component: ManageGroupComponent,
             data: { title: extract('Manage Group'), breadcrumb: 'Manage Group', routeParamBreadcrumb: false }
+          }, {
+            path: 'closecenter',
+            component: CloseCenterComponent,
+            data: { title: extract('Close Center'), breadcrumb: 'Close Center', routeParamBreadcrumb: false }
+          }, {
+            path: 'attendance',
+            component: AttendanceComponent,
+            data: { title: extract('Attendance'), breadcrumb: 'Attendance', routeParamBreadcrumb: false }
+          }, {
+            path: 'createcenter',
+            component: CreateCenterComponent,
+            data: { title: extract('Create Center'), breadcrumb: 'Create Center', routeParamBreadcrumb: false }
+          }, {
+            path: 'assignstaff',
+            component: AssignStaffComponent,
+            data: { title: extract('Assign Staff'), breadcrumb: 'Assign Staff', routeParamBreadcrumb: false }
           }
       ]
     }

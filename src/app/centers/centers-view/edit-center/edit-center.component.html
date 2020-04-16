@@ -2,7 +2,7 @@
 
   <mat-card>
 
-    <form [formGroup]="officeForm" (ngSubmit)="submit()">
+    <form>
 
       <mat-card-content>
 
@@ -10,7 +10,7 @@
 
           <mat-form-field>
             <mat-label>Name</mat-label>
-            <input required matInput formControlName="name">
+            <input required matInput>
             <mat-error *ngIf="officeForm.controls.name.hasError('required')">
               Office is <strong>required</strong>
             </mat-error>
@@ -18,7 +18,7 @@
 
           <mat-form-field>
             <mat-label>Staff</mat-label>
-            <mat-select required formControlName="parentId">
+            <mat-select required >
               <mat-option *ngFor="let office of officeData" [value]="office.id">
                 {{ office.name }}
               </mat-option>
@@ -28,7 +28,7 @@
 
           <mat-form-field>
             <mat-label>Activation Date</mat-label>
-            <input matInput [min]="minDate" [max]="maxDate" formControlName="openingDate" required [matDatepicker]="openedOnDatePicker">
+            <input matInput [min]="minDate" [max]="maxDate"  required [matDatepicker]="openedOnDatePicker">
             <mat-datepicker-toggle matSuffix [for]="openedOnDatePicker"></mat-datepicker-toggle>
             <mat-datepicker #openedOnDatePicker></mat-datepicker>
             <mat-error *ngIf="officeForm.controls.openingDate.hasError('required')">
@@ -38,7 +38,7 @@
 
           <mat-form-field>
             <mat-label>External ID</mat-label>
-            <input matInput formControlName="externalId">
+            <input matInput>
           </mat-form-field>
           
         </div>
@@ -47,7 +47,7 @@
 
       <mat-card-actions fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="5px">
         <button type="button" mat-raised-button [routerLink]="['../']">Cancel</button>
-        <button mat-raised-button color="primary" [disabled]="!officeForm.valid">Submit</button>
+        <button mat-raised-button color="primary" disabled>Submit</button>
       </mat-card-actions>
 
     </form>

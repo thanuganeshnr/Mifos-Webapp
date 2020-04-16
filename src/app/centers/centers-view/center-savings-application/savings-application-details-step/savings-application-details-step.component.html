@@ -1,4 +1,4 @@
-<form [formGroup]="SavingsDetailsForm">
+<form>
 
   <div fxLayout="row wrap" fxLayoutGap="2%" fxLayout.lt-md="column" fxLayoutAlign.gt-sm="start center">
 
@@ -13,7 +13,7 @@
 
     <mat-form-field fxFlex="48%">
       <mat-label>Submitted On</mat-label>
-      <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="startDatePicker" formControlName="startDate">
+      <input matInput  [matDatepicker]="startDatePicker">
       <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
       <mat-datepicker #startDatePicker></mat-datepicker>
     </mat-form-field>
@@ -31,7 +31,7 @@
 
     <mat-form-field fxFlex="48%">
       <mat-label>External Id</mat-label>
-      <input matInput formControlName="shortName" >
+      <input matInput  >
       
     </mat-form-field>
 

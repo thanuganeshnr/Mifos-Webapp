@@ -8,12 +8,7 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['./savings-application-terms-step.component.scss']
 })
 export class SavingsApplicationTermsStepComponent implements OnInit {
-  loanProductTermsForm: FormGroup;
-
-  valueConditionTypeData: any;
-  floatingRateData: any;
-  interestRateFrequencyTypeData: any;
-  repaymentFrequencyTypeData: any;
+  
   constructor() { }
 
   ngOnInit() {

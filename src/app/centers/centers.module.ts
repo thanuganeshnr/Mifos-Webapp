@@ -20,6 +20,10 @@ import { SavingsApplicationChargesStepComponent } from './centers-view/center-sa
 import { SavingsApplicationPreviewStepComponent } from './centers-view/center-savings-application/savings-application-preview-step/savings-application-preview-step.component';
 import { AddGroupComponent } from './centers-view/add-group/add-group.component';
 import { ManageGroupComponent } from './centers-view/manage-group/manage-group.component';
+import { CloseCenterComponent } from './centers-view/close-center/close-center.component';
+import { AttendanceComponent } from './centers-view/attendance/attendance.component';
+import { CreateCenterComponent } from './centers-view/create-center/create-center.component';
+import { AssignStaffComponent } from './centers-view/assign-staff/assign-staff.component';
 
 
 @NgModule({
@@ -32,7 +36,7 @@ import { ManageGroupComponent } from './centers-view/manage-group/manage-group.c
     FlexLayoutModule
 
   ],
-  declarations: [CentersComponent, CentersViewComponent, GeneralTabComponent, NotesTabComponent, EditCenterComponent, CenterSavingsApplicationComponent, SavingsApplicationDetailsStepComponent, SavingsApplicationTermsStepComponent, SavingsApplicationChargesStepComponent, SavingsApplicationPreviewStepComponent, AddGroupComponent, ManageGroupComponent],
+  declarations: [CentersComponent, CentersViewComponent, GeneralTabComponent, NotesTabComponent, EditCenterComponent, CenterSavingsApplicationComponent, SavingsApplicationDetailsStepComponent, SavingsApplicationTermsStepComponent, SavingsApplicationChargesStepComponent, SavingsApplicationPreviewStepComponent, AddGroupComponent, ManageGroupComponent, CloseCenterComponent, AttendanceComponent, CreateCenterComponent, AssignStaffComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ]

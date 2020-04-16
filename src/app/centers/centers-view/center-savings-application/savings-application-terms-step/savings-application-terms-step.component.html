@@ -1,14 +1,14 @@
-<form [formGroup]="SavingsTermsForm">
+<form>
 
   <div fxLayout="row wrap" fxLayoutGap="2%" fxLayout.lt-md="column" fxLayoutAlign.gt-sm="start center">
     <mat-form-field fxFlex="48%">
       <mat-label>Currency</mat-label>
-      <input matInput formControlName="shortName" value="Indian Rupee(₹)" >
+      <input matInput formControlName="shortName" value="Indian Rupee(₹)" readonly>
       
     </mat-form-field>
     <mat-form-field fxFlex="48%">
       <mat-label>Decimal Places</mat-label>
-      <input matInput formControlName="shortName" value="2" >
+      <input matInput formControlName="shortName" value="2" readonly>
       
     </mat-form-field>
     <mat-form-field fxFlex="48%">
@@ -30,7 +30,7 @@
     </mat-form-field>
     <mat-form-field fxFlex="48%">
       <mat-label>Currencies in multiples of</mat-label>
-      <input matInput formControlName="shortName" value="1" >
+      <input matInput formControlName="shortName" value="1" readonly>
     </mat-form-field>
         <mat-form-field fxFlex="48%">
     <mat-label>Interest posting period </mat-label>
@@ -83,7 +83,7 @@
   </div>
 
   <div fxLayout="row" class="margin-t" fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="2%">
-    <button mat-raised-button disabled>
+    <button mat-raised-button>
       <fa-icon icon="arrow-left"></fa-icon>&nbsp;&nbsp;
       Previous
     </button>
